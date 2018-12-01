@@ -1,0 +1,33 @@
+---
+- hosts: all
+  tasks:
+    - block:
+      - name: Instala o apache para o debian
+        apt:
+          name: apache2
+          state: present
+
+      - name: Iniciar o servico do Apache
+        service:
+          name: apache2
+          state: started
+
+      when: ansible_distribution == 'Ubuntu'
+
+    - block:
+      - name: Instala o apache para o RedHat
+        yum:
+          name: httpd
+          state: present
+
+      - name: Iniciar o servico do Apache
+        service:
+          name: httpd
+          state: started
+
+      when: ansible_distribution == 'CentOS'
+
+    - name: Copia o conteudo do portal Dexter
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html

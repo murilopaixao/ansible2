@@ -1,0 +1,10 @@
+---
+-  name: Instala o Rundeck
+   yum:
+     name:
+       - rundeck
+       - java-1.8.0
+     state: present
+   when: ansible_os_family == "RedHat"
+   notify:
+     - Inicia o Rundeck

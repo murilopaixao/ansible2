@@ -1,0 +1,12 @@
+---
+- lineinfile:
+    path: /etc/rundeck/rundeck-config.properties
+    regexp: '^grails.serverURL='
+    line: 'grails.serverURL=http://{{ inventory_hostname }}:4440'
+
+- lineinfile:
+    path: /etc/rundeck/framework.properties
+    regexp: '^grails.serverURL='
+    line: 'framework.server.url=http://{{ inventory_hostname }}:4440'
+  notify:
+    - Inicia o Rundeck

@@ -1,0 +1,6 @@
+---
+- hosts: 192.168.70.13
+  vars:
+  - gitlab_external_url: "https://{{ inventory_hostname }}/"
+  roles:
+  - ansible-role-gitlab

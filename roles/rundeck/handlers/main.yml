@@ -1,0 +1,7 @@
+---
+# handlers file for rundeck
+- name: Inicia o Rundeck
+  service:
+     name: rundeckd
+     state: restarted
+  when: ansible_os_family == "RedHat"

@@ -1,0 +1,11 @@
+---
+- name: Instala o repositorio para RHEL7
+  yum:
+    name: https://yum.puppet.com/puppet6/puppet6-release-el-7.noarch.rpm
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+- name: Instala o repositorio para Ubuntu Bionic
+  apt:
+    deb: https://apt.puppetlabs.com/puppet6-release-bionic.deb
+  when: ansible_distribution == 'Ubuntu'
